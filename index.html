@@ -773,6 +773,39 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
         }
+
+
+        .profile-photo {
+            width: 200px;
+            /* Adjust for your preference */
+            height: auto;
+            border-radius: 50%;
+            /* Circular shape */
+            border: 2px solid var(--primary-blue);
+            /* Matches your color theme */
+            margin-bottom: 1.5rem;
+            /* Space below photo before text */
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            /* Subtle glow for 'wow' */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            /* Center on smaller screens */
+        }
+
+        @media (max-width: 768px) {
+            .profile-photo {
+                width: 150px;
+                /* Smaller on tablets/phones */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-photo {
+                width: 120px;
+                /* Even smaller on very small phones */
+            }
+        }
     </style>
 </head>
 
@@ -828,6 +861,8 @@
             <h2 class="section-title" data-aos="fade-up">About Me</h2>
             <div class="about-grid">
                 <div class="about-text" data-aos="fade-right">
+                    <img src="images/profileImage.jpg" alt="Mohamed Sayed Profile Photo" class="profile-photo"
+                        data-aos="fade-up" data-aos-delay="300">
                     <p>I'm a passionate Computer Science student at <span class="code-accent">Banha University</span>
                         with a stellar GPA of <span class="code-accent">3.77</span>, specializing in full-stack
                         development and competitive programming. My journey in tech has been marked by consistent
@@ -859,7 +894,6 @@
             </div>
         </div>
     </section>
-
     <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
