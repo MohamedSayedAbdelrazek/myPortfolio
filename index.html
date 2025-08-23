@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mohamed Sayed - Software Engineer & Back-end Developer. Specializing in full-stack development, Laravel, and competitive programming.">
-    <meta name="keywords" content="software engineer, back-end developer, Laravel, competitive programming, full-stack development">
+    <meta name="description"
+        content="Mohamed Sayed - Software Engineer & Back-end Developer. Specializing in full-stack development, Laravel, and competitive programming.">
+    <meta name="keywords"
+        content="software engineer, back-end developer, Laravel, competitive programming, full-stack development">
     <title>Mohamed Sayed - Software Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -152,7 +154,8 @@
             color: #ffffff;
             position: relative;
             padding: 0 1rem;
-            padding-top: 4rem; /* Added space for fixed nav */
+            padding-top: 4rem;
+            /* Added space for fixed nav */
         }
 
         .hero::before {
@@ -314,13 +317,25 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideUpModal {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .modal-close {
@@ -341,7 +356,8 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
         }
@@ -816,7 +832,8 @@
             }
 
             .nav-links li {
-                margin: 1rem 0; /* Increased margin for better touch targets */
+                margin: 1rem 0;
+                /* Increased margin for better touch targets */
             }
 
             .mobile-menu-btn {
@@ -827,7 +844,8 @@
                 height: auto;
                 min-height: 100vh;
                 justify-content: flex-start;
-                padding-top: 6rem; /* Adjusted for nav height */
+                padding-top: 6rem;
+                /* Adjusted for nav height */
             }
 
             .hero h1 {
@@ -1157,7 +1175,8 @@
                     </div>
                     <div class="project-links">
                         <span style="color: #fbbf24;"><i class="fas fa-lock"></i> Private Repository</span>
-                        <a href="#" class="live-demo" data-video="https://www.youtube.com/embed/ahVm4CHISrE" data-placeholder="images/HireMeJobBoard.jpg">
+                        <a href="#" class="live-demo" data-video="https://www.youtube.com/embed/ahVm4CHISrE"
+                            data-placeholder="images/HireMeJobBoard.jpg">
                             <i class="fab fa-youtube"></i> Live Demo
                         </a>
                     </div>
@@ -1200,13 +1219,11 @@
                         <a href="https://github.com/MohamedSayedAbdelrazek/Library-Managment-System" target="_blank">
                             <i class="fab fa-github"></i> View on GitHub
                         </a>
-                        <!-- To add a Live Demo for Library Management System, insert it here like this:
-                           <a href="#" class="live-demo" data-video="YOUR_YOUTUBE_EMBED_LINK_HERE" data-placeholder="images/YOUR_PLACEHOLDER_IMAGE.jpg">
-                               <i class="fab fa-youtube"></i> Live Demo
-                           </a>
-                           Replace YOUR_YOUTUBE_EMBED_LINK_HERE with the YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)
-                           Replace YOUR_PLACEHOLDER_IMAGE.jpg with the path to your placeholder image in the images folder
-                        -->
+
+                        <a href="#" class="live-demo" data-video="https://www.youtube.com/embed/HBQi7MaPbQU"
+                            data-placeholder="images/LibraryManagementSystem.jpg">
+                            <i class="fab fa-youtube"></i> Live Demo
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1253,13 +1270,16 @@
                     <p>I'm always open to discussing new opportunities, interesting projects, or just having a
                         conversation about technology and software development. Feel free to reach out!</p>
                     <div class="social-links">
-                        <a href="https://linkedin.com/in/mohamed-sayed-abdulrazek" target="_blank" class="social-link" data-aos="zoom-in" data-aos-delay="100">
+                        <a href="https://linkedin.com/in/mohamed-sayed-abdulrazek" target="_blank" class="social-link"
+                            data-aos="zoom-in" data-aos-delay="100">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/MohamedSayedAbdelrazek" target="_blank" class="social-link" data-aos="zoom-in" data-aos-delay="200">
+                        <a href="https://github.com/MohamedSayedAbdelrazek" target="_blank" class="social-link"
+                            data-aos="zoom-in" data-aos-delay="200">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="mailto:m.s.abdulrazek@gmail.com" class="social-link" data-aos="zoom-in" data-aos-delay="300">
+                        <a href="mailto:m.s.abdulrazek@gmail.com" class="social-link" data-aos="zoom-in"
+                            data-aos-delay="300">
                             <i class="fas fa-envelope"></i>
                         </a>
                         <a href="tel:+201155331015" class="social-link" data-aos="zoom-in" data-aos-delay="400">
@@ -1368,7 +1388,7 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         let player;
-        window.onYouTubeIframeAPIReady = function() {
+        window.onYouTubeIframeAPIReady = function () {
             player = new YT.Player(modalIframe, {
                 events: {
                     'onStateChange': onPlayerStateChange
