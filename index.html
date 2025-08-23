@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed Sayed - Software Engineer & Back-end Developer. Specializing in full-stack development, Laravel, and competitive programming.">
+    <meta name="keywords" content="software engineer, back-end developer, Laravel, competitive programming, full-stack development">
     <title>Mohamed Sayed - Software Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -70,6 +74,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
             padding: 1rem 2rem;
+            transition: padding 0.3s ease;
         }
 
         .nav-container {
@@ -130,6 +135,11 @@
             color: var(--text-light);
             font-size: 1.5rem;
             cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-blue);
         }
 
         /* Hero Section */
@@ -142,6 +152,7 @@
             color: #ffffff;
             position: relative;
             padding: 0 1rem;
+            padding-top: 4rem; /* Added space for fixed nav */
         }
 
         .hero::before {
@@ -639,7 +650,26 @@
             color: var(--primary-blue);
         }
 
-        /* Responsive */
+        /* Profile Photo */
+        .profile-photo {
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            border: 2px solid var(--primary-blue);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Responsive Styles */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3.5rem;
@@ -649,9 +679,22 @@
             .contact-grid {
                 gap: 3rem;
             }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .certifications-grid,
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
             .nav-links {
                 display: none;
                 position: absolute;
@@ -671,11 +714,18 @@
             }
 
             .nav-links li {
-                margin: 0.5rem 0;
+                margin: 1rem 0; /* Increased margin for better touch targets */
             }
 
             .mobile-menu-btn {
                 display: block;
+            }
+
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                justify-content: flex-start;
+                padding-top: 6rem; /* Adjusted for nav height */
             }
 
             .hero h1 {
@@ -704,10 +754,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
             .section-title {
                 font-size: 2.5rem;
             }
@@ -715,11 +761,23 @@
             .hero::before {
                 margin: 10px;
             }
+
+            .profile-photo {
+                width: 150px;
+            }
         }
 
         @media (max-width: 480px) {
             nav {
-                padding: 1rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .mobile-menu-btn {
+                font-size: 1.3rem;
             }
 
             .hero h1 {
@@ -736,6 +794,7 @@
 
             .btn {
                 padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
 
             .stat-number {
@@ -753,6 +812,14 @@
 
             .social-links {
                 justify-content: center;
+            }
+
+            .profile-photo {
+                width: 120px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
             }
         }
 
@@ -772,39 +839,6 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
-        }
-
-
-        .profile-photo {
-            width: 200px;
-            /* Adjust for your preference */
-            height: auto;
-            border-radius: 50%;
-            /* Circular shape */
-            border: 2px solid var(--primary-blue);
-            /* Matches your color theme */
-            margin-bottom: 1.5rem;
-            /* Space below photo before text */
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-            /* Subtle glow for 'wow' */
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            /* Center on smaller screens */
-        }
-
-        @media (max-width: 768px) {
-            .profile-photo {
-                width: 150px;
-                /* Smaller on tablets/phones */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-photo {
-                width: 120px;
-                /* Even smaller on very small phones */
-            }
         }
     </style>
 </head>
@@ -874,19 +908,19 @@
                         creating impactful solutions.</p>
                 </div>
                 <div class="stats-grid" data-aos="fade-left">
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
                         <span class="stat-number">700+</span>
                         <span>Problems Solved</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
                         <span class="stat-number">3.77</span>
                         <span>GPA</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
                         <span class="stat-number">1st</span>
                         <span>Place Winner</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
                         <span class="stat-number">25+</span>
                         <span>Projects Judged</span>
                     </div>
@@ -1062,28 +1096,28 @@
             <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
             <div class="contact-grid">
                 <div class="contact-info" data-aos="fade-right">
-                    <div class="contact-item">
+                    <div class="contact-item" data-aos="fade-right" data-aos-delay="100">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
                             <p>m.s.abdulrazek@gmail.com</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" data-aos="fade-right" data-aos-delay="200">
                         <i class="fas fa-phone"></i>
                         <div>
                             <h4>Phone</h4>
                             <p>(+20) 1155331015</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" data-aos="fade-right" data-aos-delay="300">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Location</h4>
                             <p>Cairo, Egypt</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" data-aos="fade-right" data-aos-delay="400">
                         <i class="fas fa-graduation-cap"></i>
                         <div>
                             <h4>Education</h4>
@@ -1096,16 +1130,16 @@
                     <p>I'm always open to discussing new opportunities, interesting projects, or just having a
                         conversation about technology and software development. Feel free to reach out!</p>
                     <div class="social-links">
-                        <a href="https://linkedin.com/in/mohamed-sayed-abdulrazek" target="_blank" class="social-link">
+                        <a href="https://linkedin.com/in/mohamed-sayed-abdulrazek" target="_blank" class="social-link" data-aos="zoom-in" data-aos-delay="100">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/MohamedSayedAbdelrazek" target="_blank" class="social-link">
+                        <a href="https://github.com/MohamedSayedAbdelrazek" target="_blank" class="social-link" data-aos="zoom-in" data-aos-delay="200">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="mailto:m.s.abdulrazek@gmail.com" class="social-link">
+                        <a href="mailto:m.s.abdulrazek@gmail.com" class="social-link" data-aos="zoom-in" data-aos-delay="300">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="tel:+201155331015" class="social-link">
+                        <a href="tel:+201155331015" class="social-link" data-aos="zoom-in" data-aos-delay="400">
                             <i class="fas fa-phone"></i>
                         </a>
                     </div>
@@ -1146,6 +1180,16 @@
             const icon = mobileBtn.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
         });
     </script>
 </body>
