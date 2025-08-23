@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Sayed - Software Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,11 +14,22 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 50%, #f107a3 100%);
+            --primary-blue: #00d4ff;
+            --primary-purple: #7b2ff7;
+            --primary-pink: #f107a3;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(0, 0, 0, 0.6);
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+        }
+
         body {
             font-family: 'Inter', system-ui, sans-serif;
             line-height: 1.6;
-            color: #e2e8f0;
-            background: #0a0a0a;
+            color: var(--text-light);
+            background: var(--dark-bg);
             overflow-x: hidden;
         }
 
@@ -71,7 +83,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 50%, #f107a3 100%);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -84,7 +96,7 @@
         }
 
         .nav-links a {
-            color: #94a3b8;
+            color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -92,7 +104,7 @@
         }
 
         .nav-links a:hover {
-            color: #00d4ff;
+            color: var(--primary-blue);
         }
 
         .nav-links a::after {
@@ -102,12 +114,22 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
@@ -119,6 +141,35 @@
             text-align: center;
             color: #ffffff;
             position: relative;
+            padding: 0 1rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple), var(--primary-pink)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: borderGlow 3s infinite alternate;
+            margin: 15px;
+            pointer-events: none;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 40px rgba(123, 47, 247, 0.7), 0 0 60px rgba(241, 7, 163, 0.4);
+            }
         }
 
         .hero-content {
@@ -131,7 +182,7 @@
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #ffffff 50%, #7b2ff7 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #ffffff 50%, var(--primary-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -141,7 +192,7 @@
         .hero .subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            color: #94a3b8;
+            color: var(--text-muted);
             animation: slideUp 1s ease 0.7s both;
         }
 
@@ -187,16 +238,31 @@
             overflow: hidden;
         }
 
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
         .btn-primary {
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
             color: white;
             box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #00d4ff;
-            border: 2px solid #00d4ff;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
         }
 
         .btn:hover {
@@ -205,8 +271,8 @@
         }
 
         .btn-secondary:hover {
-            background: #00d4ff;
-            color: #0a0a0a;
+            background: var(--primary-blue);
+            color: var(--dark-bg);
         }
 
         /* Section Styles */
@@ -225,7 +291,7 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 3rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -266,17 +332,20 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         .stat-item:hover {
-            border-color: #00d4ff;
+            border-color: var(--primary-blue);
             box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px) rotateX(5deg);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -295,17 +364,18 @@
         }
 
         .certification-card {
-            background: rgba(0, 0, 0, 0.6);
+            background: var(--card-bg);
             border-radius: 20px;
             padding: 2rem;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
         }
 
         .certification-card:hover {
-            transform: translateY(-10px);
-            border-color: #7b2ff7;
+            transform: translateY(-10px) rotateY(5deg);
+            border-color: var(--primary-purple);
             box-shadow: 0 20px 40px rgba(123, 47, 247, 0.2);
         }
 
@@ -313,7 +383,7 @@
             font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -328,14 +398,14 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #00d4ff;
+            color: var(--primary-blue);
             text-decoration: none;
             margin-top: 1rem;
             transition: all 0.3s ease;
         }
 
         .cert-link:hover {
-            color: #7b2ff7;
+            color: var(--primary-purple);
             transform: translateX(5px);
         }
 
@@ -357,11 +427,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             backdrop-filter: blur(20px);
+            transform-style: preserve-3d;
         }
 
         .skill-category:hover {
-            transform: translateY(-10px);
-            border-color: #7b2ff7;
+            transform: translateY(-10px) rotateX(5deg);
+            border-color: var(--primary-purple);
             box-shadow: 0 20px 40px rgba(123, 47, 247, 0.2);
         }
 
@@ -375,7 +446,7 @@
         }
 
         .skill-category h3 i {
-            color: #00d4ff;
+            color: var(--primary-blue);
         }
 
         .skill-tags {
@@ -386,11 +457,19 @@
 
         .skill-tag {
             background: rgba(0, 212, 255, 0.2);
-            color: #00d4ff;
+            color: var(--primary-blue);
             padding: 0.5rem 1rem;
             border-radius: 25px;
             font-size: 0.9rem;
             border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(123, 47, 247, 0.2);
+            color: var(--primary-purple);
+            border-color: var(--primary-purple);
+            transform: scale(1.05);
         }
 
         /* Projects Section */
@@ -408,17 +487,18 @@
         }
 
         .project-card {
-            background: rgba(0, 0, 0, 0.6);
+            background: var(--card-bg);
             border-radius: 20px;
             padding: 2rem;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            border-color: #f107a3;
+            transform: translateY(-10px) rotateY(5deg);
+            border-color: var(--primary-pink);
             box-shadow: 0 20px 40px rgba(241, 7, 163, 0.2);
         }
 
@@ -426,7 +506,7 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #f107a3 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -451,6 +531,12 @@
             border-radius: 15px;
             font-size: 0.8rem;
             border: 1px solid rgba(123, 47, 247, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(123, 47, 247, 0.5);
         }
 
         /* Contact Section */
@@ -485,13 +571,13 @@
 
         .contact-item:hover {
             transform: translateX(10px);
-            border-color: #00d4ff;
+            border-color: var(--primary-blue);
             box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
         }
 
         .contact-item i {
             font-size: 1.5rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -504,7 +590,7 @@
         }
 
         .contact-item p {
-            color: #94a3b8;
+            color: var(--text-muted);
         }
 
         .social-links {
@@ -519,7 +605,7 @@
             justify-content: center;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
             color: white;
             text-decoration: none;
             border-radius: 50%;
@@ -550,17 +636,58 @@
             padding: 0.2rem 0.5rem;
             border-radius: 5px;
             border: 1px solid rgba(0, 212, 255, 0.3);
-            color: #00d4ff;
+            color: var(--primary-blue);
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                gap: 3rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero .description {
+                font-size: 1rem;
             }
 
             .about-grid,
@@ -572,8 +699,60 @@
                 grid-template-columns: 1fr;
             }
 
-            .certifications-grid {
+            .certifications-grid,
+            .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero::before {
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
             }
         }
 
@@ -587,12 +766,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #7b2ff7, #f107a3);
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
         }
     </style>
 </head>
@@ -604,6 +783,9 @@
     <nav>
         <div class="nav-container">
             <div class="logo">Mohamed Sayed</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -618,15 +800,16 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Mohamed Sayed</h1>
-            <div class="subtitle">Software Engineer & Back-end Developer</div>
-            <div class="description">
+            <h1 data-aos="fade-up" data-aos-duration="1000">Mohamed Sayed</h1>
+            <div class="subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Software Engineer &
+                Back-end Developer</div>
+            <div class="description" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                 Results-driven Computer Science student specializing in <span class="code-accent">full-stack
                     development</span> with expertise in PHP, Laravel, and competitive programming.
                 Passionate about creating scalable solutions and winning <span class="code-accent">1st place</span> in
                 tech competitions.
             </div>
-            <div class="cta-buttons">
+            <div class="cta-buttons" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                 <a href="#projects" class="btn btn-primary">
                     <i class="fas fa-code"></i>
                     View My Work
@@ -642,9 +825,9 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
             <div class="about-grid">
-                <div class="about-text">
+                <div class="about-text" data-aos="fade-right">
                     <p>I'm a passionate Computer Science student at <span class="code-accent">Banha University</span>
                         with a stellar GPA of <span class="code-accent">3.77</span>, specializing in full-stack
                         development and competitive programming. My journey in tech has been marked by consistent
@@ -655,7 +838,7 @@
                         with creative problem-solving. I'm driven by the challenge of optimizing system performance and
                         creating impactful solutions.</p>
                 </div>
-                <div class="stats-grid">
+                <div class="stats-grid" data-aos="fade-left">
                     <div class="stat-item">
                         <span class="stat-number">700+</span>
                         <span>Problems Solved</span>
@@ -680,9 +863,9 @@
     <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications</h2>
+            <h2 class="section-title" data-aos="fade-up">Certifications</h2>
             <div class="certifications-grid">
-                <div class="certification-card">
+                <div class="certification-card" data-aos="flip-left" data-aos-delay="200">
                     <div class="certification-title">ECPC Qualifications Participation Certificate • 2025</div>
                     <p>Qualified for the Egyptian Collegiate Programming Contest (ECPC), a prestigious competitive
                         programming competition showcasing algorithmic problem-solving skills.</p>
@@ -691,7 +874,7 @@
                         <i class="fas fa-external-link-alt"></i> View Certificate
                     </a>
                 </div>
-                <div class="certification-card">
+                <div class="certification-card" data-aos="flip-left" data-aos-delay="400">
                     <div class="certification-title">Database Level 1 - SQL Concepts and Practice • 2025</div>
                     <p>Comprehensive database certification covering SQL fundamentals, query optimization, and database
                         design principles for efficient data management.</p>
@@ -700,7 +883,7 @@
                         <i class="fas fa-external-link-alt"></i> View Certificate
                     </a>
                 </div>
-                <div class="certification-card">
+                <div class="certification-card" data-aos="flip-left" data-aos-delay="600">
                     <div class="certification-title">Laravel Framework (Udemy)</div>
                     <p>Mastered the Laravel PHP framework, including advanced concepts like Eloquent ORM, middleware,
                         authentication, and building RESTful APIs.</p>
@@ -716,9 +899,9 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="200">
                     <h3><i class="fas fa-code"></i> Programming Languages</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">C++</span>
@@ -728,7 +911,7 @@
                         <span class="skill-tag">SQL</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="300">
                     <h3><i class="fas fa-layer-group"></i> Frameworks & Tools</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Laravel</span>
@@ -738,7 +921,7 @@
                         <span class="skill-tag">Docker</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="400">
                     <h3><i class="fas fa-database"></i> Databases</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">MySQL</span>
@@ -746,7 +929,7 @@
                         <span class="skill-tag">PhpMyAdmin</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="500">
                     <h3><i class="fas fa-brain"></i> Core Concepts</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">OOP</span>
@@ -755,7 +938,7 @@
                         <span class="skill-tag">System Design</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="600">
                     <h3><i class="fas fa-trophy"></i> Algorithms</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Graph Algorithms</span>
@@ -764,7 +947,7 @@
                         <span class="skill-tag">Segment Trees</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="700">
                     <h3><i class="fas fa-globe"></i> Competitive Programming</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Codeforces</span>
@@ -780,9 +963,9 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-title">HireMe – AI-Powered Job Board</div>
                     <p>A full-featured job board platform connecting job seekers and companies. Includes two
                         applications:
@@ -800,7 +983,7 @@
                         <span style="color: #fbbf24;"><i class="fas fa-lock"></i> Private Repository</span>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="project-title">Food Order Website</div>
                     <p>Dynamic web application that streamlines restaurant operations with efficient order tracking,
                         real-time fulfillment updates, and intuitive user interface for seamless customer experience.
@@ -818,7 +1001,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="project-title">Library Management System</div>
                     <p>Comprehensive Java-based system supporting complete CRUD operations, automated due-date tracking,
                         and efficient inventory management for educational institutions.</p>
@@ -842,9 +1025,9 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
             <div class="contact-grid">
-                <div class="contact-info">
+                <div class="contact-info" data-aos="fade-right">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
@@ -874,7 +1057,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div data-aos="fade-left">
                     <h3>Let's Connect</h3>
                     <p>I'm always open to discussing new opportunities, interesting projects, or just having a
                         conversation about technology and software development. Feel free to reach out!</p>
@@ -897,7 +1080,15 @@
         </div>
     </section>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -910,6 +1101,17 @@
                     });
                 }
             });
+        });
+
+        // Mobile menu toggle
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
     </script>
 </body>
