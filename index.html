@@ -85,6 +85,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -138,6 +139,10 @@
             font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .mobile-menu-btn:hover {
@@ -535,6 +540,11 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(20px);
             transform-style: preserve-3d;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
         }
 
         .skill-category:hover {
@@ -667,6 +677,7 @@
         /* Contact Section */
         .contact {
             background: rgba(0, 0, 0, 0.9);
+            padding-bottom: 6rem;
         }
 
         .contact-grid {
@@ -707,6 +718,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             width: 30px;
+            flex-shrink: 0;
         }
 
         .contact-item h4 {
@@ -822,7 +834,7 @@
             }
 
             .logo {
-               flex: 1;
+                flex: 1;
             }
 
             .nav-links {
@@ -845,7 +857,7 @@
 
             .nav-links li {
                 margin: 1rem 0;
-                /* Increased margin for better touch targets */
+            
             }
 
             .mobile-menu-btn {
@@ -940,6 +952,7 @@
             .contact-item {
                 flex-direction: column;
                 text-align: center;
+                gap: 0.5rem; 
             }
 
             .social-links {
