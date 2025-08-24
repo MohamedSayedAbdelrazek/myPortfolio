@@ -139,10 +139,8 @@
             font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
+            position: static;
+            margin-left: auto;
         }
 
         .mobile-menu-btn:hover {
@@ -835,6 +833,7 @@
                 width: 100%;
                 padding: 0 1rem;
                 box-sizing: border-box;
+                overflow: visible;
             }
 
             .logo {
@@ -866,11 +865,8 @@
 
             .mobile-menu-btn {
                 display: block;
-                position: relative;
+                position: static;
                 margin-left: auto;
-                right: auto;
-                top: auto;
-                transform: none;
             }
 
             .hero {
